@@ -76,7 +76,10 @@ function start(){
 
 router.use(express.static("index.html"))
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+    if(history.length == 0){
+        let re = await loadFromAltas()
+    }
     res.sendFile(path.resolve("index.html"))
 })
 
